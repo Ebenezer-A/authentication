@@ -1,11 +1,12 @@
 import app from "./src/express.js";
 import { connectToDb } from "./src/mongoose.js";
+import * as environments from './src/environments.js';
 
 const start = async () => {
-    await connectToDb();
-    app.listen(5000, ()=>{
-        console.log("server running on port 5000");
-    })
-}
+  await connectToDb();
+  app.listen(environments.port, () => {
+    console.log(`server running on port ${environments.port}`);
+  });
+};
 
 start()
